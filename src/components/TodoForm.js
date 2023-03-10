@@ -1,7 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 function TodoForm(props) {
     const [input, setInput] = useState('');
+
+    const focus = useRef(null)
+
+    useEffect(() => {
+        focus.current.focus()
+    })
 
     const handleChange = e =>{
         setInput(e.target.value)
@@ -10,10 +16,10 @@ function TodoForm(props) {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // props.onSubmit({
-        //     id: Math.floor(Math.random() * 10000),
-        //     text: input
-        // })
+        props.onSubmit({
+            id: Math.floor(Math.random() * 10000),
+            text: input
+         })
 
         setInput('');
     };
@@ -29,6 +35,7 @@ function TodoForm(props) {
             name='text'
             className='todo-input' 
             onChange={handleChange}
+            ref={focus}
             >
          </input>
          <button className='todo-button'>
