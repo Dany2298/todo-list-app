@@ -50,6 +50,7 @@ function TodoList() {
   return (
     <div>
         <h1> What's the plan for today? </h1>
+        <p> Write down your tasks, make them happen. </p>
         <TodoForm onSubmit={addTodo}/>
           <Todo todos={todos}
           completeTodo={completeTodo}
